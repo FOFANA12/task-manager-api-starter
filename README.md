@@ -2,6 +2,11 @@
 
 Squelette d'une API REST de gestion de projets et de tâches, construite avec **Node.js** et **Express**.
 
+## Objectifs pédagogiques
+
+- **Structurer une application** en couches distinctes, chacune avec une responsabilité claire : routes, controllers, repositories, models.
+- **Comprendre le rôle d'un composant d'accès aux données** (le *repository*) : c'est le seul endroit qui lit et écrit les données. Le reste de l'application ne sait pas d'où elles viennent — tableau en mémoire aujourd'hui, base de données via Prisma demain — et n'a pas à changer quand la source évolue.
+
 La structure et la configuration sont fournies. **Votre travail : compléter les fichiers marqués `TODO`** pour obtenir une API fonctionnelle.
 
 Cette version fonctionne **sans base de données** : les données sont des tableaux en mémoire dans les repositories. Elle sert de base avant l'introduction d'un ORM (Prisma).
