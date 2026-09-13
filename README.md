@@ -5,11 +5,11 @@ Squelette d'une API REST de gestion de projets et de tâches, construite avec **
 ## Objectifs pédagogiques
 
 - **Structurer une application** en couches distinctes, chacune avec une responsabilité claire : routes, controllers, repositories, models.
-- **Comprendre le rôle d'un composant d'accès aux données** (le *repository*) : c'est le seul endroit qui lit et écrit les données. Le reste de l'application ne sait pas d'où elles viennent — tableau en mémoire aujourd'hui, base de données via Prisma demain — et n'a pas à changer quand la source évolue.
+- **Comprendre le rôle d'un composant d'accès aux données** (le *repository*) : c'est le seul endroit qui lit et écrit les données. Le reste de l'application ne sait pas d'où elles viennent — tableau en mémoire aujourd'hui, base de données MySQL demain (via `mysql2` ou Prisma) — et n'a pas à changer quand la source évolue.
 
 La structure et la configuration sont fournies. **Votre travail : compléter les fichiers marqués `TODO`** pour obtenir une API fonctionnelle.
 
-Cette version fonctionne **sans base de données** : les données sont des tableaux en mémoire dans les repositories. Elle sert de base avant l'introduction d'un ORM (Prisma).
+Cette version fonctionne **sans base de données** : les données sont des tableaux en mémoire dans les repositories. Elle sert de base avant l'introduction d'une base de données, avec ou sans ORM.
 
 ## Prérequis
 
@@ -80,7 +80,7 @@ Requête HTTP → Route → Controller → Repository → Model
 
 - **Route** : associe une URL et une méthode HTTP à une méthode du controller.
 - **Controller** : lit `req.params` / `req.body`, appelle le repository, renvoie la réponse avec le bon code HTTP.
-- **Repository** : seul endroit qui manipule les données. C'est lui qui sera remplacé par Prisma.
+- **Repository** : seul endroit qui manipule les données. C'est lui qui changera quand on passera à une base de données.
 - **Model** : décrit la forme d'un objet (`Project`, `Task`).
 
 ### Convention de nommage
