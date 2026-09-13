@@ -1,4 +1,4 @@
-# Task Manager Starter
+# Task Manager API Starter
 
 Squelette d'une API REST de gestion de projets et de tâches, construite avec **Node.js** et **Express**.
 
@@ -19,8 +19,8 @@ Cette version fonctionne **sans base de données** : les données sont des table
 ## Installation
 
 ```bash
-git clone <url-du-depot>
-cd task-manager-starter
+git clone https://github.com/FOFANA12/task-manager-api-starter.git
+cd task-manager-api-starter
 npm install
 cp .env.example .env
 ```

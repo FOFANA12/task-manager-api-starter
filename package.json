@@ -1,5 +1,5 @@
 {
-  "name": "task-manager-starter",
+  "name": "task-manager-api-starter",
   "version": "1.0.0",
   "description": "Starter pédagogique : API REST de gestion de projets et de tâches (Node.js + Express). Objectif : structurer une application en couches (routes, controllers, repositories, models) et comprendre le rôle du composant d'accès aux données avant l'introduction d'un ORM.",
   "main": "src/server.js",
