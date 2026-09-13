@@ -305,4 +305,9 @@ Pour aller plus loin, des bibliothèques comme **zod** ou **express-validator** 
 
 ## Étape suivante
 
-Remplacer les tableaux en mémoire des repositories par une vraie base de données avec **Prisma**. Seuls les fichiers du dossier `repositories/` devront changer : les routes et les controllers restent identiques.
+Remplacer les tableaux en mémoire des repositories par une vraie base de données MySQL, de deux façons :
+
+1. **Sans ORM, avec `mysql2`** : écrire les requêtes SQL à la main dans les repositories (`SELECT`, `INSERT`, `UPDATE`, `DELETE`).
+2. **Avec l'ORM Prisma** : décrire les modèles dans un schéma et laisser Prisma générer les requêtes (`findMany`, `findUnique`, `create`, `update`, `delete`).
+
+Dans les deux cas, seuls les fichiers du dossier `repositories/` changent : les routes et les controllers restent identiques. C'est tout l'intérêt d'avoir isolé l'accès aux données dans un composant dédié.
