@@ -5,7 +5,7 @@ Squelette d'une API REST de gestion de projets et de tâches, construite avec **
 ## Objectifs pédagogiques
 
 - **Structurer une application** en couches distinctes, chacune avec une responsabilité claire : routes, controllers, repositories, models.
-- **Comprendre le rôle d'un composant d'accès aux données** (le *repository*) : c'est le seul endroit qui lit et écrit les données. Le reste de l'application ne sait pas d'où elles viennent — tableau en mémoire aujourd'hui, base de données MySQL demain (via `mysql2` ou Prisma) — et n'a pas à changer quand la source évolue.
+- **Comprendre le rôle d'un composant d'accès aux données** (le *repository*) : c'est le seul endroit qui lit et écrit les données. Le reste de l'application ne sait pas d'où elles viennent — tableau en mémoire aujourd'hui, base de données MySQL demain (via `mysql2` ou un ORM) — et n'a pas à changer quand la source évolue.
 
 La structure et la configuration sont fournies. **Votre travail : compléter les fichiers marqués `TODO`** pour obtenir une API fonctionnelle.
 
@@ -307,7 +307,7 @@ Pour aller plus loin, des bibliothèques comme **zod** ou **express-validator** 
 
 Remplacer les tableaux en mémoire des repositories par une vraie base de données MySQL, de deux façons :
 
-1. **Sans ORM, avec `mysql2`** : écrire les requêtes SQL à la main dans les repositories (`SELECT`, `INSERT`, `UPDATE`, `DELETE`).
-2. **Avec l'ORM Prisma** : décrire les modèles dans un schéma et laisser Prisma générer les requêtes (`findMany`, `findUnique`, `create`, `update`, `delete`).
+1. **Sans ORM, avec `mysql2`** : écrire les requêtes SQL à la main dans les repositories (`SELECT`, `INSERT`, `UPDATE`, `DELETE`). Le repository garde tout son sens : c'est lui qui traduit les appels en SQL.
+2. **Avec l'ORM Prisma** : décrire les modèles dans un schéma, et Prisma fournit directement les méthodes d'accès aux données (`prisma.task.findMany()`, `findUnique()`, `create()`, `update()`, `delete()`). Le repository peut alors devenir une fine couche au-dessus du client Prisma (utile pour centraliser les `include`, la génération de `reference`, etc.), ou être supprimé si les controllers appellent Prisma directement.
 
-Dans les deux cas, seuls les fichiers du dossier `repositories/` changent : les routes et les controllers restent identiques. C'est tout l'intérêt d'avoir isolé l'accès aux données dans un composant dédié.
+Dans les deux cas, les routes et les controllers restent identiques (ou presque) : c'est l'intérêt d'avoir isolé l'accès aux données dans un composant dédié.
